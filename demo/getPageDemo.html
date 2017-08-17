@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页demo</title>
+	<style type="text/css">
+		*{margin: 0; padding: 0;}
+		a{text-decoration: none;}
+		.next_previous{width: 950px; margin: 200px auto;}
+		.tcdPageCode{padding: 15px 0px; font-size: 14px; color:#666;}
+		.tcdNumber,.current{display: inline-block; color: #37B978; height: 20px; line-height: 20px; min-width:15px; padding: 0 3px; text-align: center; border: 1px solid #37B978; margin: 0 5px; vertical-align: middle;}
+		.tcdNumber:hover{text-decoration: none; color: #FFF; background: #37B978;}
+		.current{color: #ffffff;background-color: #37B978;}
+		.disabled,.prevPage,.nextPage{display: inline-block; margin: 0 2px; vertical-align: middle; height: 22px; width: 22px;
+		    background: #e2e2e2 url(images/previous_arrow-01.png) no-repeat center;}
+		.prevPage,.nextPage{background-color: #b3b3b3;border: 0;}
+		.nextPage{background: #b3b3b3 url(images/next_arrow-02.png) no-repeat center;}
+		.next{background-image: url(images/next_arrow-02.png);}
+		.pageturning,.pagenumbox,.jumppage{display:inline-block;}
+		.pagenumbox{width:22%;}
+		.pagetal{border:1px solid #DDD; height:22px;margin:0 8px;}
+		.pagetal:focus{border:1px solid #DDD; outline:none;}
+		.pageturning{min-width:55%; text-align:center;}
+		.jumppage{width:22%; text-align:right;}
+		.pageCont{width:18%;border:1px solid #DDD; padding-left:5px;margin:0 8px;height:24px !important; line-height:24px !important;font-size:12px;}
+		.pageCont:focus{outline:none;border:1px solid #37B978;}
+		.jumpbtn,.jumpbtn:hover,.jumpbtn:active{color: #fff;background-color: #37b978;height: 22px;display: inline-block;width: 29px;text-align: center;text-decoration: none;line-height:1.7;}
+	</style>
+	
+</head>
+<body>
+	<div class="next_previous">
+		<div class="tcdPageCode"></div>
+	</div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="getPage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			getNext(1,10);
+
+			function getNext(page,rows){
+				$(".tcdPageCode").createPage({
+					pageCount:10,
+				 	current:page,
+				 	pagetotal:rows,
+				 	next:getNext,
+				});
+			}
+		});
+	</script>
+</body>
+</html>
